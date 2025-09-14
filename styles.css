@@ -837,39 +837,48 @@
 @media (max-width: 768px) {
   /* 1. ФИКСИРУЕМ ШАПКУ */
   header {
-    position: fixed; /* Меняем sticky на fixed для надежности на мобильных */
-    width: 100%; /* Ширина на весь экран */
+    position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
-    padding: 10px 15px; /* Немного увеличим отступы для удобства */
-    z-index: 1000; /* Убедимся, что шапка поверх всего */
-    background-color: #f8f8f8; /* Явно задаем фон на всякий случай */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Чуть заметнее тень */
+    padding: 10px 15px;
+    z-index: 1000;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   }
 
   /* 2. ДОБАВЛЯЕМ ОТСТУП ДЛЯ ОСНОВНОГО КОНТЕНТА */
-  /* Чтобы контент не заезжал под фиксированную шапку */
   body {
-    padding-top: 70px; /* Высота твоей шапки + немного запаса */
+    padding-top: 70px;
   }
 
-  /* 4. АДАПТИРУЕМ НАДПИСЬ "ОНЛАЙН..." */
-  .sub-info {
-    font-size: 0.7rem; /* Уменьшаем шрифт */
-    margin-left: 10px; /* Уменьшаем отступ */
-    white-space: nowrap; /* Запрещаем перенос */
+  /* 3. СКРЫВАЕМ ОБЫЧНОЕ МЕНЮ */
+  .main-menu {
+    display: none !important; /* Скрываем старое меню */
   }
 
-     /* 5. ЧАТ-БOT - ПРАВИЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ НА МОБИЛЬНЫХ */
+  /* 4. ПОКАЗЫВАЕМ КНОПКУ-ГАМБУРГЕР */
+  .hamburger-btn {
+    display: block !important; /* Показываем гамбургер */
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    padding: 5px;
+    margin-left: 10px;
+  }
+
+  /* 5. ЧАТ-БOT - ЦЕНТРИРОВАНИЕ */
   .chatbox {
     position: fixed;
-    top: 50% !important; /* Центрируем по вертикали */
-    left: 50% !important; /* Центрируем по горизонтали */
-    transform: translate(-50%, -50%) !important; /* Смещаем обратно на половину своих размеров для точного центрирования */
-    width: 90% !important; /* Ширина 90% от экрана */
-    height: 80% !important; /* Высота 80% от экрана */
-    max-width: none !important; /* Убираем ограничение по максимальной ширине */
-    max-height: none !important; /* Убираем ограничение по максимальной высоте */
-    border-radius: 12px; /* Закругленные углы */
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    height: 80% !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 12px;
   }
 }
