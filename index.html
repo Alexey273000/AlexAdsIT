@@ -486,26 +486,26 @@ chatInput.addEventListener('keydown', (e) => {
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const mainMenu = document.querySelector('.main-menu');
 
-  hamburgerBtn.addEventListener('click', () => {
-    // Переключаем видимость меню
-    const isMenuVisible = mainMenu.style.display === 'flex';
-    
-    if (isMenuVisible) {
-      mainMenu.style.display = 'none';
-    } else {
-      // Показываем меню как вертикальный список
-      mainMenu.style.display = 'flex';
-      mainMenu.style.flexDirection = 'column';
-      mainMenu.style.position = 'absolute';
-      mainMenu.style.top = '100%';
-      mainMenu.style.left = '0';
-      mainMenu.style.right = '0';
-      mainMenu.style.background = '#f8f8f8';
-      mainMenu.style.padding = '10px';
-      mainMenu.style.gap = '10px';
+  hamburgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Предотвращаем всплытие события
+    mainMenu.classList.toggle('mobile-active');
+  });
+
+  // Закрываем меню при клике вне его
+  document.addEventListener('click', (e) => {
+    if (!mainMenu.contains(e.target) && e.target !== hamburgerBtn) {
+      mainMenu.classList.remove('mobile-active');
+    }
+  });
+
+  // Закрываем меню при клике на ссылку в нем
+  mainMenu.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      mainMenu.classList.remove('mobile-active');
     }
   });
 </script>
   
 </body>
 </html>
+
