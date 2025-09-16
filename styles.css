@@ -929,32 +929,48 @@
     padding: 15px; /* Увеличиваем область для нажатия */
   }
 
-    /* 8. ВЕРТИКАЛЬНОЕ РАСПОЛОЖЕНИЕ КНОПОК КВЕСТА НА МОБИЛЬНЫХ */
+      /* 8. ВЕРТИКАЛЬНОЕ РАСПОЛОЖЕНИЕ КНОПОК КВЕСТА НА МОБИЛЬНЫХ */
   .step[data-step="1"] {
     display: flex;
-    flex-direction: column; /* Кнопки в колонку */
-    align-items: center; /* Центрируем по горизонтали */
-    gap: 20px; /* Расстояние между кнопками */
-    width: 90%; /* На всю ширину */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* УВЕЛИЧИЛИ расстояние между кнопками */
+    width: 100%;
+    padding: 20px 0; /* Добавили отступы сверху и снизу */
   }
 
   .step[data-step="1"] .next-btn {
-    width: 90%; /* Ширина кнопок 90% от контейнера */
-    max-width: 300px; /* Но не шире 300px */
-    margin: 0; /* Убираем стандартные отступы */
-    padding: 16px 20px; /* Увеличиваем область для нажатия */
-    font-size: 18px; /* Чуть увеличиваем шрифт для читаемости */
-    text-align: center; /* Центрируем текст */
+    width: 80%; /* УМЕНЬШИЛИ ширину с 90% до 80% */
+    max-width: 280px; /* УМЕНЬШИЛИ максимальную ширину */
+    margin: 0;
+    padding: 18px 15px; /* Немного изменили отступы */
+    font-size: 16px;
+    text-align: center;
+    border-radius: 12px; /* Более скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень для лучшего визуального разделения */
   }
 
-  /* 9. АДАПТИРУЕМ КНОПКИ ВЫБОРА ТАРИФОВ */
-  .choice-btn {
-    width: 95%; /* Почти на всю ширину */
-    max-width: 350px;
-    margin: 15px auto; /* Центрируем с отступами */
-    padding: 15px;
+  /* 9. Дополнительные стили для лучшего визуального разделения */
+  .step[data-step="1"] .next-btn:nth-child(1) {
+    background: #0077cc; /* Синий */
+  }
+  .step[data-step="1"] .next-btn:nth-child(2) {
+    background: #28a745; /* Зеленый */
+  }
+  .step[data-step="1"] .next-btn:nth-child(3) {
+    background: #ffc107; /* Желтый */
+    color: #333; /* Темный текст для контраста */
+  }
+  .step[data-step="1"] .next-btn:nth-child(4) {
+    background: #dc3545; /* Красный */
+  }
+
+  .step[data-step="1"] .next-btn:hover {
+    transform: translateY(-2px); /* Эффект приподнятости при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
 }
+
 
 
 
