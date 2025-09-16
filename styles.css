@@ -934,8 +934,8 @@
     display: flex;
     flex-direction: column; /* Кнопки в колонку */
     align-items: center; /* Центрируем по горизонтали */
-    gap: 15px; /* Расстояние между кнопками */
-    width: 100%; /* На всю ширину */
+    gap: 20px; /* Расстояние между кнопками */
+    width: 90%; /* На всю ширину */
   }
 
   .step[data-step="1"] .next-btn {
@@ -955,6 +955,7 @@
     padding: 15px;
   }
 }
+
 
 
 
