@@ -870,9 +870,9 @@
     display: none !important; /* Скрываем старое меню */
   }
 
-  /* 4. ПОКАЗЫВАЕМ КНОПКУ-ГАМБУРГЕР */
-   .hamburger-btn {
-    display: block !important; /* Показываем гамбургер на мобильных */
+   /* 4. ПОКАЗЫВАЕМ ГАМБУРГЕР ТОЛЬКО НА МОБИЛЬНЫХ */
+  .hamburger-btn {
+    display: block !important; /* Показываем только на мобильных */
     background: none;
     border: none;
     font-size: 24px;
@@ -880,6 +880,7 @@
     color: #333;
     padding: 5px 10px;
     margin-left: auto; /* Прижимаем к правому краю */
+    z-index: 1001; /* Чтобы был над меню */
   }
 
   /* 5. ЧАТ-БOT - ЦЕНТРИРОВАНИЕ */
@@ -895,5 +896,6 @@
     border-radius: 12px;
   }
 }
+
 
 
