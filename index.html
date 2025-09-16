@@ -489,12 +489,20 @@ chatInput.addEventListener('keydown', (e) => {
   hamburgerBtn.addEventListener('click', (e) => {
     e.stopPropagation(); // Предотвращаем всплытие события
     mainMenu.classList.toggle('mobile-active');
+    
+    // Меняем иконку гамбургера на крестик при открытии и обратно
+    if (mainMenu.classList.contains('mobile-active')) {
+      hamburgerBtn.textContent = '✕'; // Крестик
+    } else {
+      hamburgerBtn.textContent = '☰'; // Гамбургер
+    }
   });
 
   // Закрываем меню при клике вне его
   document.addEventListener('click', (e) => {
     if (!mainMenu.contains(e.target) && e.target !== hamburgerBtn) {
       mainMenu.classList.remove('mobile-active');
+      hamburgerBtn.textContent = '☰'; // Возвращаем иконку гамбургера
     }
   });
 
@@ -502,10 +510,20 @@ chatInput.addEventListener('keydown', (e) => {
   mainMenu.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
       mainMenu.classList.remove('mobile-active');
+      hamburgerBtn.textContent = '☰'; // Возвращаем иконку гамбургера
+    }
+  });
+
+  // Закрываем меню при изменении ориентации экрана или resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      mainMenu.classList.remove('mobile-active');
+      hamburgerBtn.textContent = '☰';
     }
   });
 </script>
   
 </body>
 </html>
+
 
