@@ -963,8 +963,8 @@
 
     /* 9. СТИЛИ ДЛЯ КНОПОК ПЕРВОГО ШАГА - УЗКИЕ */
   .step[data-step="1"] .next-btn {
-    width: 220px !important; /* УМЕНЬШИЛИ ширину */
-    max-width: 80%;
+    width: 200px !important; /* УМЕНЬШИЛИ ширину */
+    max-width: 75%;
     margin: 0;
     padding: 14px 8px; /* Немного уменьшили отступы */
     font-size: 15px; /* Чуть меньший шрифт */
@@ -980,11 +980,12 @@
 
   /* 10. УЗКАЯ КНОПКА ДЛЯ "Создание изображения" */
   .step[data-step="1"] .next-btn[data-category="image"] {
-    width: 240px !important; /* Чуть шире для длинного текста */
+    width: 200px !important; /* Чуть шире для длинного текста */
     font-size: 14px; /* Еще меньший шрифт */
     padding: 12px 6px;
   }
 }
+
 
 
 
