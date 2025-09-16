@@ -865,11 +865,25 @@
     padding-top: 70px;
   }
 
-  /* 3. СКРЫВАЕМ ОБЫЧНОЕ МЕНЮ */
+    /* 3. СКРЫВАЕМ ОБЫЧНОЕ МЕНЮ И НАСТРАИВАЕМ МОБИЛЬНОЕ */
   .main-menu {
-    display: none !important; /* Скрываем старое меню */
+    display: none !important; /* По умолчанию скрыто на мобильных */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #f8f8f8;
+    padding: 15px;
+    gap: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
   }
 
+  /* Когда меню активно (добавляется через JS) */
+  .main-menu.mobile-active {
+    display: flex !important;
+  }
    /* 4. ПОКАЗЫВАЕМ ГАМБУРГЕР ТОЛЬКО НА МОБИЛЬНЫХ */
   .hamburger-btn {
     display: block !important; /* Показываем только на мобильных */
@@ -896,6 +910,7 @@
     border-radius: 12px;
   }
 }
+
 
 
 
