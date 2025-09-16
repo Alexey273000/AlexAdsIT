@@ -481,7 +481,31 @@ chatInput.addEventListener('keydown', (e) => {
 });
 </script>
 
+<script>
+  // Функционал гамбургер-меню
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mainMenu = document.querySelector('.main-menu');
+
+  hamburgerBtn.addEventListener('click', () => {
+    // Переключаем видимость меню
+    const isMenuVisible = mainMenu.style.display === 'flex';
+    
+    if (isMenuVisible) {
+      mainMenu.style.display = 'none';
+    } else {
+      // Показываем меню как вертикальный список
+      mainMenu.style.display = 'flex';
+      mainMenu.style.flexDirection = 'column';
+      mainMenu.style.position = 'absolute';
+      mainMenu.style.top = '100%';
+      mainMenu.style.left = '0';
+      mainMenu.style.right = '0';
+      mainMenu.style.background = '#f8f8f8';
+      mainMenu.style.padding = '10px';
+      mainMenu.style.gap = '10px';
+    }
+  });
+</script>
+  
 </body>
-
 </html>
-
