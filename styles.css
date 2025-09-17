@@ -99,7 +99,6 @@
     .logo-block {
       display: flex;
       align-items: center;
-      flex-shrink: 0; /* Не сжимается */
     }
 
     .main-menu {/* Контейнер основного меню */
@@ -999,3 +998,4 @@
     padding: 12px 6px;
   }
 }
+
