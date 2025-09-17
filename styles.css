@@ -37,6 +37,7 @@
   width: auto;
   text-align: left;
   position: relative;
+  margin-right: 40px; /* Добавляем отступ справа */
 }
 
     /* Логотип */
@@ -1000,5 +1001,6 @@
     padding: 12px 6px;
   }
 }
+
 
 
