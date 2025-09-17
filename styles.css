@@ -99,6 +99,8 @@
     .logo-block {
       display: flex;
       align-items: center;
+      flex-shrink: 0;
+  margin-right: 40px; /* Добавляем отступ справа */
     }
 
     .main-menu {/* Контейнер основного меню */
@@ -998,4 +1000,5 @@
     padding: 12px 6px;
   }
 }
+
 
