@@ -33,9 +33,9 @@
 
     /* Контейнер для заголовков(изненено 23.06.2025)*/
 .header-content {
-  margin: 0 auto;/*Центрируем содержимое(изненено 23.06.2025)*/
-  width: fit-content;/*Ширина по содержимому(изненено 23.06.2025)*/
-  text-align: center;
+  margin: 0;
+  width: auto;
+  text-align: left;
   position: relative;
 }
 
@@ -79,7 +79,8 @@
       flex-shrink: 0;/* Запрещаем сжатие навигации при недостатке места */
       overflow-x: auto;/* Горизонтальная прокрутка если элементы не помещаются */
       white-space: nowrap; /* Запрещаем перенос текста внутри навигации */
-      margin: 0 auto; /* Центрируем навигацию */
+      margin: 0; /* Центрируем навигацию */
+      justify-content: center;
     }
 
     nav a { /* Базовые стили для всех ссылок в навигации */
@@ -862,6 +863,12 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   }
 
+  .header-content {
+    margin: 0;
+    width: auto;
+    text-align: left;
+  }
+
    /* 6. Прячем надпись "Онлайн..." на мобильных */
   .sub-info {
     display: none !important;
@@ -992,21 +999,3 @@
     padding: 12px 6px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
