@@ -91,6 +91,7 @@
       justify-content: center;
       min-width: 0;
       max-width: 50%; /* Ограничиваем максимальную ширину */
+      overflow-x: none;
     }
 
     nav a { /* Базовые стили для всех ссылок в навигации */
@@ -1033,6 +1034,7 @@
     padding: 12px 6px;
   }
 }
+
 
 
 
