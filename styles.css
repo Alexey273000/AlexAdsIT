@@ -50,6 +50,7 @@
       gap: 10px;/* Расстояние 10px между картинкой и текстом */
       text-decoration: none; /* Убираем подчеркивание у ссылки */
       color: inherit;/* Наследуем цвет текста от родительского элемента */
+      margin-right: 30px; /* Добавляем зазор между логотипом и навигацией */
     }
 
     .logo img {/* Изображение в логотипе */
@@ -67,10 +68,11 @@
     .logo-desc {
       font-size: 0.75rem;/* Размер шрифта 75% от базового (около 12px) */
       color: #666;/* Средне-серый цвет для второстепенного текста */
-      white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* Добавляем многоточие если не помещается */
-  max-width: 120px; /* Ограничиваем ширину описания */
+      white-space: normal; /* Разрешаем перенос строк */
+      line-height: 1.2; /* Уменьшаем межстрочный интервал */
+  overflow: visible; /* Убираем обрезку */
+  text-overflow: clip; 
+  max-width: none; /* Убираем ограничение ширины */
     }
 
     .logo-name {/*Название компании в логотипе(изменено 21.06.2025)*/
@@ -90,8 +92,8 @@
       margin: 0 auto; /* Добавляем отступы по бокам */
       justify-content: center;
       min-width: 0;
-      max-width: 50%; /* Ограничиваем максимальную ширину */
-      overflow-x: none;
+      max-width: none; /* Убираем ограничение максимальной ширины */
+      overflow-x: visible; /* Исправляем на visible */
     }
 
     nav a { /* Базовые стили для всех ссылок в навигации */
@@ -777,13 +779,8 @@
   }
 
   nav {
-    gap: 15px;
-    max-width: 45%; /* Уменьшаем максимальную ширину */
-  }
-
-  .logo-desc {
-    font-size: 0.7rem;
-    max-width: 100px;
+    gap: 20px;
+    max-width: none; 
   }
   
    .sub-info {
@@ -1034,6 +1031,7 @@
     padding: 12px 6px;
   }
 }
+
 
 
 
