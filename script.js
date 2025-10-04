@@ -1,4 +1,4 @@
-<script>// Скрипт для квеста
+// Скрипт для квеста
   let selected = '';// Переменная для хранения выбранных опций
   document.querySelectorAll('.next-btn').forEach(button => {// Находим все кнопки "Далее"
     button.addEventListener('click', () => {// Вешаем обработчик клика
@@ -118,10 +118,8 @@ fetch(YANDEX_FUNCTION_URL, {
     alert('Ошибка соединения. Попробуйте позже.');
   });
 });
-</script>
 
 <!-- JavaScript для чата (изменено 26.06.2025)-->
-<script>
  // 1. Получаем элементы DOM
 const chatbox = document.getElementById('chatbox');// Окно чата
 const chatMessages = document.getElementById('chat-messages');// Контейнер сообщений
@@ -243,9 +241,7 @@ chatInput.addEventListener('keydown', (e) => {
     }, 0);
   }
 });
-</script>
 
-<script>
   // Функционал гамбургер-меню
   const hamburgerBtn = document.getElementById('hamburger-btn');
   const mainMenu = document.querySelector('.main-menu');
@@ -285,4 +281,3 @@ chatInput.addEventListener('keydown', (e) => {
       hamburgerBtn.textContent = '☰';
     }
   });
-</script>
