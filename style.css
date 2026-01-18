@@ -141,7 +141,6 @@ body.thank-you-page {
       font-size: 2rem;/* Размер шрифта в 2 раза больше базового (32px) */
       margin-bottom: 10px; /* Отступ снизу 10px */
       padding-bottom: 0;/* Убираем внутренний отступ снизу */
-      color: #fff;/* Белый цвет текста */
     }
 
     .hero p {/* Параграф в hero-секции */
@@ -1191,6 +1190,7 @@ body.thank-you-page {
         text-align: center;
       }
     }
+
 
 
 
