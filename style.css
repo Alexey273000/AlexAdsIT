@@ -26,6 +26,10 @@ body.main-page {
   color: white; /* Белый текст */
 }
 
+body.main-page .hero h1 {
+  color: white !important; /* Сделает заголовок белым на главной */
+}
+
 /* Стили ТОЛЬКО для страницы благодарности (thankyou.html) */
 body.thank-you-page {
   background-color: #f8f9fa; /* Светлый фон */
@@ -1190,6 +1194,7 @@ body.thank-you-page {
         text-align: center;
       }
     }
+
 
 
 
