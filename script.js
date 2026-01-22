@@ -33,20 +33,7 @@
 document.getElementById('project-summary-hidden').value = selected;// Сохраняем в скрытое поле
     });
   });
-document.querySelectorAll('input[name="method"]').forEach(radio => {
-  radio.addEventListener('change', () => {
-    const emailField = document.getElementById('email-field');
-    const phoneField = document.getElementById('phone-field');
-    
-    if (radio.value === 'email') {
-      emailField.style.display = 'block';
-      phoneField.style.display = 'none';
-    } else {
-      emailField.style.display = 'none';
-      phoneField.style.display = 'block';
-    }
-  });
-});
+);
 
  document.getElementById('order-form').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -59,16 +46,7 @@ document.querySelectorAll('input[name="method"]').forEach(radio => {
   let contactValue = '';
   let isValid = true;
   
-  if (contactMethod === 'email') {
-    const emailInput = document.querySelector('input[name="email"]');
-    contactValue = emailInput.value.trim();
-    
-    // Простая валидация email
-    if (!contactValue || !contactValue.includes('@') || !contactValue.includes('.')) {
-      alert('Пожалуйста, введите корректный email');
-      isValid = false;
-    }
-  } else {
+  
     const phoneInput = document.querySelector('input[name="phone"]');
     contactValue = phoneInput.value.trim();
     
