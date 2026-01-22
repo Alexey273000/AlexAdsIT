@@ -684,7 +684,7 @@ body.thank-you-page {
   }
 }
 
-/* Убедитесь, что изображение правой панели остается на месте */
+/* Изображение правой панели остается на месте */
 .side-image--right {
   margin-left: auto; /* Выравнивание по правому краю */
 }
@@ -769,7 +769,7 @@ body.thank-you-page {
 }
 
 .side-title {
-  color: #fff;
+  color: #2c3e50;
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 15px;
@@ -834,7 +834,7 @@ body.thank-you-page {
   margin-top: 15px;
   font-size: 1.2rem; /* Такой же размер как у .side-title */
   font-weight: 600; /* Такой же жирный шрифт */
-  color: #fff; /* Белый цвет вместо полупрозрачного */
+  color: #2c3e50; /* Тёмно-серый цвет вместо полупрозрачного */
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Такая же тень */
   line-height: 1.3;
@@ -996,6 +996,7 @@ body.thank-you-page {
     padding: 12px 6px;
   }
 }
+
  /* Базовые стили (можно вынести в отдельный styles.css) */
     * {
       box-sizing: border-box;
@@ -1189,6 +1190,7 @@ body.thank-you-page {
         text-align: center;
       }
     }
+
 
 
 
