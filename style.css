@@ -32,8 +32,8 @@ body.thank-you-page {
 }
 
     header {/* Стили для шапки сайта */
-      background-color: #f8f8f8;/*Светлая шапка(исправлено 20.06.2025)*/
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);/* Тень под шапкой: смещение 0px по X, 2px по Y, размытие 4px, полупрозрачный черный */
+      background-color: #ffffff; /* Чисто белый */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Более выраженная тень */
       padding: 6px 20px;
       display: flex;/* Flexbox для размещения элементов в горизонтальный ряд */
       align-items: center;/* Вертикальное выравнивание всех элементов по центру */
@@ -41,6 +41,7 @@ body.thank-you-page {
       position: sticky;/* Липкое позиционирование - остается на месте при прокрутке */
       top: 0;/* Прикрепление к верхней части экрана */
       z-index: 1000;/* Высокий z-index для отображения поверх других элементов */
+      border-bottom: 1px solid #eaeaea; /* Чёткая линия-разделитель */
     }
 
     /* Контейнер для заголовков(изненено 23.06.2025)*/
@@ -855,7 +856,7 @@ body.thank-you-page {
     left: 0;
     padding: 10px 15px;
     z-index: 1000;
-    background-color: #f8f8f8;
+    background-color: #ffffff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   }
 
@@ -1184,6 +1185,7 @@ body.thank-you-page {
         text-align: center;
       }
     }
+
 
 
 
