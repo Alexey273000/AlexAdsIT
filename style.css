@@ -21,8 +21,8 @@ body {
 
 /* Стили ТОЛЬКО для главной страницы (index.html) */
 body.main-page {
-  background-color: rgb(58, 54, 54); /* Тёмный фон */
-  color: white; /* Белый текст */
+  background-color: #f8f9fa; /* Светло-серый фон */
+  color: white; #2c3e50;     /* Тёмно-синий/серый для основного текста */
 }
 
 /* Стили ТОЛЬКО для страницы благодарности (thankyou.html) */
@@ -1189,6 +1189,7 @@ body.thank-you-page {
         text-align: center;
       }
     }
+
 
 
 
