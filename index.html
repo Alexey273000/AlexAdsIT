@@ -3,7 +3,7 @@
 <head><!-- Начало секции метаданных -->
   <meta charset="UTF-8" /><!-- Кодировка UTF-8 для корректного отображения русских символов -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!-- Настройка адаптивности для мобильных устройств -->
-  <title>Алексей: IT, Ads, текст, изображения</title><!-- Заголовок страницы во вкладке браузера -->
+  <title>Frontend-разработчик AlexeyWebDev — вёрстка лендингов</title><!-- Заголовок страницы во вкладке браузера -->
   <link rel="stylesheet" href="style.css">
 </head><!-- Конец секции head-->
 <body class="main-page">
@@ -15,8 +15,8 @@
     <a href="#" class="logo"><!-- Ссылка-логотип -->
      <img src="img/logo.png" alt="Логотип" /><!-- Изображение лого -->
       <div class="logo-text"><!-- Текстовая часть лого -->
-        <div class="logo-name">AlexAdsIT</div><!-- Название -->
-        <div class="logo-desc">Текст, изображения, IT и реклама</div><!-- Описание -->
+        <div class="logo-name">AlexeyWebDev</div><!-- Название -->
+        <div class="logo-desc">Frontend-разработчик / Верстальщик</div><!-- Описание -->
       </div>
     </a>
   </div>
@@ -70,66 +70,63 @@
   <!-- Основной блок (Hero Section) -->
   <section class="hero screen">
     <!-- Заголовок -->
-    <h1>Мои специализации</h1>
+    <h1>Верстаю лендинги за 3 дня. 100% соответствие макету Figma</h1>
     <!-- Подпись, описывающая специализации -->
-    <p>Я объединяю копирайтинг, создание изображений, IT и рекламу. Это редкое и мощное сочетание для вашего бизнеса.</p><!-- Описание -->
+    <p>Работаю на чистом HTML, CSS, JS. Ваш сайт будет быстрым и идеально отображаться на всех устройствах.</p><!-- Описание -->
     <!-- Изображение компьютера -->
     <img src="img/Background.png" alt="Компьютер" class="computer-img" /><!-- Фоновое изображение -->
   </section>
   
-  <!--Рассчитать стоимость-->
-<section class="builder" id="project"><!-- Якорь #project -->
-  <div class="step-card"></div><!-- Карточка шага (пустая) -->
-   <div class="step-wrapper"><!-- Обёртка шагов -->
-  <!-- Шаг 1: Выбор направления -->
-  <div class="step active" data-step="1"><!-- Активный шаг -->
-    <h2>Выберите направление проекта</h2><!-- Подзаголовок -->
-    <button class="next-btn" data-category="it">IT-проект</button><!--Кнопка IT-проекта-->
-  </div>
+ <!--Рассчитать стоимость-->
+<section class="builder" id="project">
+  <div class="step-card">
+    <div class="step-wrapper">
+      <!-- Шаг 1: Выбор направления -->
+      <div class="step active" data-step="1">
+        <h2>Выберите направление проекта</h2>
+        <button class="next-btn" data-category="it">IT-проект</button>
+      </div>
 
-  <!-- Шаг 2: Выбор подкатегории -->
-<!--IT-проект-->
-<div class="step" data-step="2" data-category="it">
-  <h2>Выберите тариф</h2>
+      <!-- Шаг 2: Выбор подкатегории IT -->
+      <div class="step" data-step="2" data-category="it">
+        <h2>Выберите тариф</h2>
+        <button class="choice-btn">
+          <strong>Эконом — 800 ₽</strong><br>
+          <small>Базовая помощь с кодом или решением задачи — C, C++, PHP, JS, C#, Java, Ассемблер. Чистый код без фреймворков, до 100 строк. Общаюсь в текстовом формате — без звонков, быстро и понятно</small>
+        </button>
+        <button class="choice-btn">
+          <strong>Стандарт — 960 ₽</strong><br>
+          <small>Всё из пакета "Эконом" + объяснение решения: логика, структура, ключевые моменты. Кратко, ясно, по делу — поймёшь, как работает твой код</small>
+        </button>
+        <button class="choice-btn">
+          <strong>Бизнес — 1 280 ₽</strong><br>
+          <small>Максимум пользы: помощь с задачей, подробное объяснение и расширенный код до 300 строк с комментариями. Улучшенный функционал и чёткое понимание каждой строки</small>
+        </button>
+      </div>
 
-  <button class="choice-btn">
-    <strong>Эконом — 800 ₽</strong><br>
-    <small>Базовая помощь с кодом или решением задачи — C, C++, PHP, JS, C#, Java, Ассемблер. Чистый код без фреймворков, до 100 строк. Общаюсь в текстовом формате — без звонков, быстро и понятно</small>
-  </button>
+      <!-- Шаг 3: Ввод контакта -->
+      <div class="step" data-step="3">
+        <h2>Спасибо! Вот ваш заказ</h2>
+        <form id="order-form">
+          <div id="project-summary-display" class="summary-display-box"></div>
+          <input type="hidden" id="project-summary-hidden" name="summary" />
 
-  <button class="choice-btn">
-    <strong>Стандарт — 960 ₽</strong><br>
-    <small>Всё из пакета "Эконом" + объяснение решения: логика, структура, ключевые моменты. Кратко, ясно, по делу — поймёшь, как работает твой код</small>
-  </button>
+          <!-- Выбор способа связи -->
+          <p style="margin-bottom: 10px; font-weight: bold;">Оставьте номер телефона и мы бесплатно отправим заказ на WhatsApp, звонить не будем!</p>
+          <label><input type="radio" name="method" value="phone" checked> Введите телефон</label>
 
-  <button class="choice-btn">
-    <strong>Бизнес — 1 280 ₽</strong><br>
-    <small>Максимум пользы: помощь с задачей, подробное объяснение и расширенный код до 300 строк с комментариями. Улучшенный функционал и чёткое понимание каждой строки</small>
-  </button>
-</div>
-     
-<!--Шаг 3-->
- <div class="step" data-step="3"><!-- Контейнер шага 3 (data-атрибут для JS) -->
-  <h2>Спасибо! Вот ваш заказ</h2><!-- Заголовок этапа -->
-  <form id="order-form"><!-- Форма заказа (основной элемент) -->
-    <div id="project-summary-display" class="summary-display-box"></div><!-- Блок для отображения выбранных опций -->
-    <input type="hidden" id="project-summary-hidden" name="summary" /><!-- Скрытое поле для передачи данных на сервер -->
+          <!-- Поле для телефона (видимо только при выборе телефона) -->
+          <div id="phone-field">
+            <input type="tel" name="phone" placeholder="Введите телефон" />
+          </div>
 
-    <!-- Выбор способа связи -->
-   <p style="margin-bottom: 10px; font-weight: bold;">Оставьте номер телефона и мы бесплатно отправим заказ на WhatsApp, звонить не будем!</p><!-- Инструкция -->
-  <label><input type="radio" name="method" value="phone"> Введите телефон</label><!-- Вариант "Телефон" -->
-</div>
+          <button type="submit">Отправить</button>
+        </form>
+      </div> <!-- Закрытие шага 3 -->
 
-<div id="phone-field" style="display: none;"><!-- Поле для телефона (скрыто изначально) -->
-  <input type="tel" name="phone" placeholder="Введите телефон" /><!-- Необязательное поле телефона -->
-</div>
-
-    <button type="submit">Отправить</button><!-- Кнопка отправки формы -->
-  </form>
-</div>
-</div><!-- Закрытие step-wrapper -->
-</div><!-- Закрытие step-card -->
-</section><!-- Закрытие секции builder -->
+    </div> <!-- Закрытие .step-wrapper -->
+  </div> <!-- Закрытие .step-card -->
+</section> <!-- Закрытие секции .builder -->
 
   <!-- Кнопка с иконкой трубки -->
   <button class="cta-button"><!--Кнопка звонка-->
@@ -167,15 +164,3 @@
 <script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
