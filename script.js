@@ -33,7 +33,6 @@
 document.getElementById('project-summary-hidden').value = selected;// Сохраняем в скрытое поле
     });
   });
-);
 
  document.getElementById('order-form').addEventListener('submit', function(e) {
   e.preventDefault();
