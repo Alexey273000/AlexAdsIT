@@ -1,103 +1,99 @@
-// Скрипт для квеста
-  let selected = '';// Переменная для хранения выбранных опций
-  document.querySelectorAll('.next-btn').forEach(button => {// Находим все кнопки "Далее"
-    button.addEventListener('click', () => {// Вешаем обработчик клика
-      selected = button.textContent;// Запоминаем текст кнопки
-      const category = button.dataset.category;// Получаем категорию из data-атрибута
+// --- СКРИПТ ДЛЯ КВЕСТА (ИСПРАВЛЕННЫЙ) ---
+let selected = '';
 
-     const current = document.querySelector('.step.active');// Находим активный шаг
-      if (current) current.classList.remove('active');// Деактивируем текущий шаг
-
-      const step2 = document.querySelector(`.step[data-step="2"][data-category="${category}"]`);// Находим шаг 2 нужной категории
-      if (step2) {// Если шаг 2, то:
-        step2.classList.add('active');// Активируем шаг 2
-        step2.scrollIntoView({ behavior: 'smooth', block: 'center' });//Плавная прокрутка к шагу
-      }
+// 1. Обработка первого шага (кнопка "IT-проект")
+document.querySelectorAll('.next-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        selected = button.textContent;
+        const category = button.dataset.category;
+        const current = document.querySelector('.step.active');
+        if (current) current.classList.remove('active');
+        const step2 = document.querySelector(`.step[data-step="2"][data-category="${category}"]`);
+        if (step2) {
+            step2.classList.add('active');
+            step2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     });
-  });
-
-  document.querySelectorAll('.choice-btn').forEach(button => {// Находим все кнопки выбора
-    button.addEventListener('click', () => {// Вешаем обработчик клика
-      selected += ' → ' + button.textContent;// Добавляем выбор к строке
-
-       const current = document.querySelector('.step.active');// Находим активный шаг
-      if (current) current.classList.remove('active');// Деактивируем текущий шаг
-
-      const step3 = document.querySelector('.step[data-step="3"]');// Находим шаг 3
-      if (step3) {// Если шаг 3, то:
-        step3.classList.add('active');// Активируем шаг 3
-        step3.scrollIntoView({ behavior: 'smooth', block: 'center' });//Плавная прокрутка
-      }
-
-      document.getElementById('project-summary-display').textContent = selected;// Выводим выбор в блок
-document.getElementById('project-summary-hidden').value = selected;// Сохраняем в скрытое поле
-    });
-  });
-
- document.getElementById('order-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // Получаем данные
-  const selectedOptions = document.getElementById('project-summary-hidden').value;
-  const contactMethod = document.querySelector('input[name="method"]:checked').value;
-  
-  // Получаем значение контакта с валидацией
-  let contactValue = '';
-  let isValid = true;
-  
-  
-    const phoneInput = document.querySelector('input[name="phone"]');
-    contactValue = phoneInput.value.trim();
-    
-    // Улучшенная валидация телефона
-    const phoneDigits = contactValue.replace(/\D/g, '');
-    
-    // Проверяем, что введено достаточно цифр И что значение не похоже на email
-    if (phoneDigits.length < 5 || contactValue.includes('@')) {
-      alert('Пожалуйста, введите корректный телефон (только цифры, минимум 5)');
-      isValid = false;
-    } else {
-      contactValue = phoneDigits; // Оставляем только цифры
-    }
-}
-  
-  if (!isValid) return;
-  
-  // Формируем сообщение для Telegram
-  const message = `📌 Новый заказ!\n\n` +
-                 `🔹 Детали заказа:\n${selectedOptions}\n\n` +
-                 `🔹 Контакт (${contactMethod}): ${contactValue}`;
-  
- // Безопасная отправка через Yandex Cloud
-const YANDEX_FUNCTION_URL = 'https://functions.yandexcloud.net/d4e0jgoq4npo6bkceckk'; // URL вашей функции в Яндекс Облаке
-
-fetch(YANDEX_FUNCTION_URL, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-    message: message, // Передаем текст сообщения
-    type: 'order' // Указываем тип - заказ из квеста
-  })
-})
-
-  .then(response => response.json())
-  .then(data => {
-    if (data.ok) {
-      window.location.href = "thankyou.html";
-    } else {
-      alert('Ошибка при отправке. Попробуйте ещё раз.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Ошибка соединения. Попробуйте позже.');
-  });
 });
 
-<!-- JavaScript для чата (изменено 26.06.2025)-->
- // 1. Получаем элементы DOM
+// 2. Обработка второго шага (выбор тарифа)
+document.querySelectorAll('.choice-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        selected += ' → ' + button.textContent;
+        const current = document.querySelector('.step.active');
+        if (current) current.classList.remove('active');
+        const step3 = document.querySelector('.step[data-step="3"]');
+        if (step3) {
+            step3.classList.add('active');
+            step3.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        // Показываем сводку в блоке на третьем шаге
+        document.getElementById('project-summary-display').textContent = selected;
+        document.getElementById('project-summary-hidden').value = selected;
+    });
+});
+
+// 3. Обработка третьего шага (отправка формы)
+document.getElementById('order-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Отменяем стандартную отправку формы
+
+    // Получаем данные из формы
+    const userName = document.getElementById('user-name').value.trim();
+    const phoneInput = document.getElementById('phone');
+    const phoneValue = phoneInput.value.trim();
+    const selectedMessenger = document.getElementById('selected-messenger').value;
+
+    // Простая валидация
+    if (!userName) {
+        alert('Пожалуйста, введите ваше имя.');
+        document.getElementById('user-name').focus();
+        return;
+    }
+
+    const phoneDigits = phoneValue.replace(/\D/g, '');
+    if (phoneDigits.length < 10) { // Минимум 10 цифр для российского номера
+        alert('Пожалуйста, введите корректный номер телефона (минимум 10 цифр).');
+        phoneInput.focus();
+        return;
+    }
+
+    // Формируем сводку заказа (из шагов 1 и 2)
+    const orderSummary = document.getElementById('project-summary-hidden').value;
+
+    // Формируем сообщение для Telegram
+    const message = `📋 Новая заявка с лендинга!\n\n` +
+        `👤 Имя: ${userName}\n` +
+        `📞 Телефон: ${phoneDigits}\n` +
+        `💬 Предпочтительный мессенджер: ${selectedMessenger}\n` +
+        `---\n` +
+        `📦 Детали заказа: ${orderSummary}`;
+
+    // URL вашей функции в Яндекс.Облаке
+    const YANDEX_FUNCTION_URL = 'https://functions.yandexcloud.net/d4e0jgoq4npo6bkceckk';
+
+    // Отправляем данные
+    fetch(YANDEX_FUNCTION_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: message, type: 'order' })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                // Перенаправляем на страницу благодарности
+                window.location.href = "thankyou.html";
+            } else {
+                alert('Произошла ошибка при отправке. Пожалуйста, попробуйте ещё раз.');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка сети:', error);
+            alert('Ошибка соединения с сервером.');
+        });
+});
+
+// <!-- JavaScript для чата (изменено 26.06.2025)-->
+// 1. Получаем элементы DOM
 const chatbox = document.getElementById('chatbox');// Окно чата
 const chatMessages = document.getElementById('chat-messages');// Контейнер сообщений
 const chatInput = document.getElementById('chat-input');// Поле ввода
