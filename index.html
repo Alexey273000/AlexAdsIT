@@ -91,7 +91,7 @@
     <div class="hero-visual"></div>
   </section>
   
- <!--Рассчитать стоимость-->
+ <!--Рассчитать стоимость (Квиз)-->
 <section class="builder" id="project">
   <div class="step-card">
     <div class="step-wrapper">
@@ -103,34 +103,37 @@
         <button class="next-btn" data-category="it">Вёрстка отдельных блоков / доработка</button>
       </div>
 
-      <!-- Шаг 2: Ключевые требования -->
-      <div class="step" data-step="2" data-category="it">
-        <h2>Что для вас важно в вёрстке? (можно выбрать несколько)</h2>
-        <button class="choice-btn">
-          <strong>Pixel Perfect</strong><br>
-          <small> — точное соответствие дизайну</small>
+     <!-- Шаг 2: Ключевые требования -->
+<div class="step" data-step="2" data-category="it">
+    <h2>Что для вас важно в вёрстке? (можно выбрать несколько)</h2>
+
+    <!-- Общий контейнер для вариантов выбора -->
+    <div class="multichoice-options">
+        <button class="choice-btn" type="button" data-value="pixel-perfect">
+            <strong>Pixel Perfect</strong><br>
+            <small> — точное соответствие дизайну</small>
         </button>
-        <button class="choice-btn">
-          <strong>Максимальная скорость загрузки</strong><br>
-          <small>(оптимизация)</small>
+        <button class="choice-btn" type="button" data-value="speed">
+            <strong>Максимальная скорость загрузки</strong><br>
+            <small>(оптимизация)</small>
         </button>
-        <button class="choice-btn">
-          <strong>Сложные интерактивные элементы</strong><br>
-          <small>(слайдеры, анимация)</small>
+        <button class="choice-btn" type="button" data-value="interactive">
+            <strong>Сложные интерактивные элементы</strong><br>
+            <small>(слайдеры, анимация)</small>
         </button>
-        <button class="choice-btn">
-          <strong>Адаптивность под мобильные устройства</strong><br>
+        <button class="choice-btn" type="button" data-value="adaptive">
+            <strong>Адаптивность под мобильные устройства</strong><br>
         </button>
-        <button class="choice-btn">
-          <strong>Чистый и документированный код</strong><br>
+        <button class="choice-btn" type="button" data-value="clean-code">
+            <strong>Чистый и документированный код</strong><br>
         </button>
-        <button class="choice-btn">
-          <strong>Назад</strong><br>
-        </button>
-        <button class="choice-btn">
-          <strong>Далее</strong><br>
-        </button>
-      </div>
+    </div>
+    <!-- Кнопки управления шагом (ВНЕ контейнера multichoice-options) -->
+    <div class="step-controls">
+        <button type="button" class="control-btn step-prev">Назад</button>
+        <button type="button" class="control-btn step-next" disabled>Далее</button>
+    </div>
+</div>
 
       <!-- Шаг 3: Ввод контакта -->
 <div class="step" data-step="3">
