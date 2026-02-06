@@ -16,22 +16,78 @@ document.querySelectorAll('.next-btn').forEach(button => {
     });
 });
 
-// 2. Обработка второго шага (выбор тарифа)
-document.querySelectorAll('.choice-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        selected += ' → ' + button.textContent;
-        const current = document.querySelector('.step.active');
-        if (current) current.classList.remove('active');
+// 2. ОБРАБОТКА ВТОРОГО ШАГА (мультивыбор)
+const stepPrevBtn = document.querySelector('.step-controls .step-prev');
+const stepNextBtn = document.querySelector('.step-controls .step-next');
+
+// Множество для хранения выбранных значений (чтобы не было дублей)
+const selectedRequirements = new Set();
+
+// Навешиваем обработчики на кнопки выбора
+document.querySelectorAll('.multichoice-options .choice-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const value = this.getAttribute('data-value');
+        const wasSelected = selectedRequirements.has(value);
+
+        // Переключаем состояние (выбрано/не выбрано)
+        if (wasSelected) {
+            // Убираем выбор
+            selectedRequirements.delete(value);
+            this.classList.remove('selected'); // Снимаем визуальный класс
+        } else {
+            // Добавляем выбор
+            selectedRequirements.add(value);
+            this.classList.add('selected'); // Добавляем визуальный класс
+        }
+
+        // Разблокируем кнопку "Далее", если выбран хотя бы один пункт
+        stepNextBtn.disabled = selectedRequirements.size === 0;
+    });
+});
+
+// Обработчик кнопки "Далее" (переход на шаг 3)
+if (stepNextBtn) {
+    stepNextBtn.addEventListener('click', function () {
+        // Формируем текстовое описание выбранных требований
+        const requirementsText = Array.from(selectedRequirements).map(value => {
+            // Можно добавить более красивые названия
+            const labels = {
+                'pixel-perfect': 'Pixel Perfect',
+                'speed': 'Максимальная скорость',
+                'interactive': 'Сложная интерактивность',
+                'adaptive': 'Адаптивность',
+                'clean-code': 'Чистый код'
+            };
+            return labels[value] || value;
+        }).join(', ');
+
+        // Обновляем общий список выбора для сводки
+        // (selected - это переменная из первой части скрипта, где выбран тип сайта)
+        const updatedSelection = selected + ' → Важные требования: ' + requirementsText;
+        document.getElementById('project-summary-display').textContent = updatedSelection;
+        document.getElementById('project-summary-hidden').value = updatedSelection;
+
+        // Переключаем шаги
+        document.querySelector('.step[data-step="2"]').classList.remove('active');
         const step3 = document.querySelector('.step[data-step="3"]');
         if (step3) {
             step3.classList.add('active');
             step3.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-        // Показываем сводку в блоке на третьем шаге
-        document.getElementById('project-summary-display').textContent = selected;
-        document.getElementById('project-summary-hidden').value = selected;
     });
-});
+}
+
+// Обработчик кнопки "Назад" (возврат на шаг 1)
+if (stepPrevBtn) {
+    stepPrevBtn.addEventListener('click', function () {
+        document.querySelector('.step[data-step="2"]').classList.remove('active');
+        const step1 = document.querySelector('.step[data-step="1"]');
+        if (step1) {
+            step1.classList.add('active');
+            step1.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+}
 
 // 3. Обработка третьего шага (отправка формы)
 document.getElementById('order-form').addEventListener('submit', function (e) {
