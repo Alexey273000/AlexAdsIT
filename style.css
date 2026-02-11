@@ -1,14 +1,18 @@
 /* ===== CSS ПЕРЕМЕННЫЕ (CUSTOM PROPERTIES) ===== */
 :root {
   /* Цветовая палитра - УПРОЩЕННАЯ */
-  --color-primary: #4a7abf;          /* Основной синий */
-  --color-primary-dark: #3a5f9f;     /* Тёмный синий (при наведении) */
+  --color-primary: #2962FF;          /* Основной синий */
+  --color-primary-dark: #0039CB;     /* Тёмный синий (при наведении) */
   --color-hamburger: #333333;        /* Цвет гамбургера*/
+  --color-heading: #2c3e50;          /* Тёмный цвет для всех заголовков */
   --color-text: #ffffff;             /* Основной цвет текста */
+  --color-usp-bg: white;             /* Белый фон */
+  --color-usp-check: #666;           /* Тёмно-бежевая галочка */
+  --color-text-dark: #2c3e50;        /* Тёмный текст для светлых фонов */
   --color-text-light: #666;          /* Второстепенный текст */
   --color-text-muted: #999;          /* Неактивный текст */
-  --color-background: #ffffff;       /* Основной фон */
-  --color-background-light: #f8f9fa; /* Светлый фон (для секций) */
+  --color-background: rgba(255, 255, 255, 0.5); /* Полупрозрачный фон */
+  --color-surface: #f0f2f5;          /* 🟢 ПОВЕРХНОСТЬ: фон чата, квиза, карточек */
   --color-border: #ddd;              /* Цвет границ и разделителей */
   --color-success: #4CAF50;          /* Зелёный для успешных операций */
   
@@ -51,16 +55,10 @@ body {
   color: var(--color-text);
 }
 
-/* Стили для главной страницы */
-body.main-page {
-  background-color: var(--color-background);
-  color: var(--color-text);
-}
-
 /* Стили для страницы благодарности */
 body.thank-you-page {
-  background-color: var(--color-background-light);
-  color: var(--color-text);
+  background-color: var(--color-surface); /* Светлый фон */
+  color: var(--color-text-dark);          /* Тёмный текст по умолчанию */
 }
 
 /* ===== ЛЕЙАУТ (КОНТЕЙНЕРЫ И СЕКЦИИ) ===== */
@@ -68,6 +66,7 @@ body.thank-you-page {
 /* Шапка сайта */
 header {
   background-color: var(--color-background);
+  backdrop-filter: blur(5px); /* Лёгкое размытие фона под шапкой для "стеклянного" эффекта */
   box-shadow: var(--shadow-light);
   padding: 6px 20px;
   display: flex;
@@ -88,7 +87,7 @@ header {
 
 /* Главная секция (Hero Section) */
 .hero {
-  padding: 40px 20px 10px 40px;
+  padding: 80px 20px 10px 40px;
   text-align: left;
   margin-bottom: 0;
   min-height: 100vh;
@@ -107,21 +106,17 @@ header {
 .hero-visual {
   /* Абсолютное позиционирование для растягивания на всю ширину родителя */
   position: absolute;
-  top: 0;
+  top: 0; /* Базовое значение */
   left: 0;
   width: 100%;
-  /* Фиксированная высота. */
-  height: 120vh;
-
+  /* Фиксированная размер изображения */
+  height: 130vh;
   /* Настройки фонового изображения */
   background-image: url('img/Background.png'); /* Путь к файлу */
   background-repeat: no-repeat; /* Чтобы изображение не повторялось */
   background-position: center center; /* Центрируем изображение */
   background-size: cover; /* Масштабируем, чтобы оно заполнило блок */
-
-  /* Опускаем этот блок под основное содержимое (.hero) */
-  z-index: -1; /* Отрицательный z-index помещает блок под родителя с z-index: 1 */
-
+  z-index: -1;
   /* Полупрозрачный тёмный оверлей для лучшей читаемости текста */
   background-color: rgba(0, 0, 0, 0.4); /* Лёгкое затемнение фона */
   background-blend-mode: overlay; /* Смешиваем цвет с изображением */
@@ -134,35 +129,6 @@ header {
   justify-content: center;
   align-items: center;
   min-height: 70vh;
-}
-
-/* Боковые панели для широких экранов */
-.side-panel {
-  display: none;
-  position: fixed;
-  top: 160px;
-  width: 370px;
-  z-index: -1;
-  padding: 20px;
-  flex-direction: column;
-  gap: 25px;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.side-panel--left {
-  left: 15px;
-  align-items: flex-start;
-  transform: translateX(-20px);
-  opacity: 0;
-  animation: slideInLeft 0.8s ease forwards;
-}
-
-.side-panel--right {
-  right: 15px;
-  align-items: flex-end;
-  transform: translateX(20px);
-  opacity: 0;
-  animation: slideInRight 0.8s ease forwards;
 }
 
 /* Поднимаем основной контент */
@@ -321,24 +287,105 @@ nav a:hover {
   display: block;
   width: 100%;
   margin: 10px 0;
-  padding: 10px;
+  padding: 15px 20px;
   text-align: left;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 12px;
-  background-color: green;
+  background-color: var(--color-primary);  /* Единый синий цвет кнопок */
+  color: var(--color-text); /* Белый текст */
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-button);
+}
+
+.choice-btn:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
 }
 
 .choice-btn strong {
   display: block;
   font-size: 18px;
   margin-bottom: 5px;
+  color: var(--color-text); /* Белый цвет для жирного текста */
 }
 
 .choice-btn small {
+  color: rgba(255, 255, 255, 0.9);  /* Почти белый, чуть прозрачный */
+  font-size: 0.9rem;
+}
+
+/* Выбранная кнопка во втором шаге */
+.choice-btn.selected {
+  background-color: var(--color-primary-dark); /* Тёмно-синий */
+  transform: scale(1.02);
+}
+
+.choice-btn.selected strong,
+.choice-btn.selected small {
+  color: var(--color-text); /* Белый текст на синем фоне */
+}
+
+/* Кнопка квиза на главном экране */
+.hero-cta-button {
+  display: inline-block;
+  padding: 14px 32px;          /* Чуть крупнее обычных кнопок */
+  background-color: var(--color-primary);
   color: white;
-  font-size: 19px;
+  border-radius: 40px;         /* Сильно скругленные края */
+  font-size: 1.1rem;           /* Немного крупнее */
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  margin: 20px 0;             /* Отступы сверху и снизу */
+}
+
+.hero-cta-button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);  /* Эффект подъёма */
+  box-shadow: var(--shadow-medium);
+}
+
+/* Список УТП */
+.hero-usp-list {
+  list-style: none;        /* Убираем стандартные маркеры */
+  padding: 0;
+  margin: 30px 0 0 0;
+}
+
+.hero-usp-list li {
+  position: relative;      /* Для позиционирования псевдоэлемента */
+  padding-left: 36px;      /* Место для кружка с галочкой */
+  margin-bottom: 16px;     /* Отступ между пунктами */
+  font-size: 1.1rem;
+  color: var(--color-text); /* Белый текст на фоне */
+  line-height: 1.4;
+  min-height: 28px;       /* Чтобы текст не наезжал */
+}
+
+/* Создаём кружок с галочкой */
+.hero-usp-list li::before {
+  content: "✓";           /* Символ галочки */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;           /* Размер кружка */
+  height: 24px;
+  background-color: var(--color-usp-bg);
+  color: var(--color-usp-check);
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;    /* Делаем круг */
+  box-shadow: var(--shadow-button); /* Лёгкая тень */
 }
 
 /* 5. КВЕСТ (КОНСТРУКТОР ПРОЕКТА) */
@@ -360,6 +407,12 @@ nav a:hover {
 
 .builder .step.active {
   display: block;
+}
+
+/* Заголовки шагов квиза */
+.builder .step h2 {
+  color: var(--color-text); /* Белый цвет */
+  margin-bottom: 20px;
 }
 
 .step-wrapper {
@@ -410,12 +463,12 @@ nav a:hover {
   min-height: 120px;
   border: 2px solid var(--color-primary);
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--color-background-light) 0%, #e9ecef 100%);
+  background: var(--color-surface); /* ✅ Единый цвет поверхности */
   text-align: left;
   word-wrap: break-word;
   white-space: pre-wrap;
   font-size: 1.1rem;
-  color: var(--color-text);
+  color: var(--color-text-dark); /* ✅ Тёмный текст для читаемости */
   line-height: 1.6;
   box-shadow: var(--shadow-medium);
   overflow-y: auto;
@@ -509,7 +562,7 @@ nav a:hover {
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
-  background: var(--color-background-light);
+  background: var(--color-surface); /* ✅ Вместо #f0f2f5 */
   border-radius: var(--border-radius);
   border: 1px solid var(--color-border);
   margin: 5px;
@@ -542,8 +595,8 @@ nav a:hover {
 .messages-container .bot-message {
   margin-right: auto;
   margin-left: 0;
-  background: var(--color-background);
-  color: var(--color-text);
+  background: var(--color-background); /* Белый полупрозрачный */
+  color: var(--color-text-dark); /* ✅ Тёмный текст, а не белый! */
   border: 1px solid var(--color-border);
   border-radius: 12px 12px 12px 0;
   margin-bottom: 10px;
@@ -623,135 +676,6 @@ nav a:hover {
   background: var(--color-primary-dark);
 }
 
-/* 7. ИЗОБРАЖЕНИЯ И КОНТЕНТ БОКОВЫХ ПАНЕЛЕЙ */
-.computer-img {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-.side-image-container {
-  width: 100%;
-  max-height: 40%;
-  display: flex;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.side-image-container:hover {
-  transform: translateY(-5px);
-}
-
-.side-image-container,
-.side-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.side-image {
-  width: 100%;
-  max-width: 370px;
-  height: auto;
-  object-fit: contain;
-  opacity: 0.8;
-  border-radius: var(--border-radius);
-  margin: 0 auto;
-}
-
-.side-additional-image {
-  width: 98%;
-  max-width: 370px;
-  height: auto;
-  object-fit: contain;
-  opacity: 0.8;
-  border-radius: var(--border-radius);
-  margin: 0 auto;
-}
-
-.side-content {
-  width: 100%;
-  color: var(--color-text);
-  font-size: 0.9rem;
-  text-align: left;
-  padding: 0 15px;
-}
-
-.side-panel--right .side-content {
-  text-align: center;
-  align-items: center;
-}
-
-.side-title {
-  color: var(--color-text);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 15px;
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-}
-
-.side-text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  text-align: inherit;
-  margin: 0 10px;
-}
-
-.side-text p {
-  margin-bottom: 15px;
-}
-
-.side-list {
-  list-style: none;
-  padding: 0;
-  margin: 15px 0;
-}
-
-.side-list li {
-  position: relative;
-  padding-left: 20px;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  transition: transform 0.3s ease;
-}
-
-.side-list li:before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-  font-weight: bold;
-}
-
-.side-list li:hover {
-  transform: translateX(5px);
-}
-
-.image-caption {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-text);
-  text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  line-height: 1.3;
-  max-width: 90%;
-  padding: 0 10px;
-}
-
-.side-panel--right .side-image-container {
-  margin-bottom: 50px;
-}
-
-.side-panel--right .side-image-container:last-child {
-  margin-bottom: 0;
-}
-
 /* 8. СТРАНИЦА БЛАГОДАРНОСТИ (THANKYOU.HTML) */
 .thank-you-header {
   background: var(--color-background);
@@ -773,6 +697,13 @@ nav a:hover {
   animation: fadeInUp 0.8s ease;
 }
 
+/* Заголовок в карточке успеха */
+.success-card h1 {
+  color: var(--color-heading);
+  margin-bottom: 1rem;
+  font-size: 2.2rem;
+}
+
 .success-icon {
   width: 80px;
   height: 80px;
@@ -787,15 +718,17 @@ nav a:hover {
   font-weight: bold;
 }
 
-.thank-you-page h1 {
-  color: var(--color-text);
+.thank-you-page h1,
+.thank-you-page h2 {
+  color: var(--color-heading); /* Все заголовки на странице благодарности тёмные */
   margin-bottom: 1rem;
   font-size: 2.2rem;
 }
 
+/* Текст в карточке успеха */
 .success-message {
   font-size: 1.1rem;
-  color: var(--color-text-light);
+  color: var(--color-text-dark); /* Тёмный текст */
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
@@ -803,15 +736,16 @@ nav a:hover {
 }
 
 .next-steps {
-  background: var(--color-background-light);
+  background: var(--color-surface);
   padding: 2rem;
   border-radius: 12px;
   margin: 2rem 0;
   text-align: left;
 }
 
+/* Заголовок "Что будет дальше?" */
 .next-steps h2 {
-  color: var(--color-text);
+  color: var(--color-heading);
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -821,9 +755,10 @@ nav a:hover {
   margin-bottom: 0;
 }
 
+/* Текст в списке "Что будет дальше?" */
 .next-steps li {
   margin-bottom: 0.8rem;
-  color: var(--color-text-light);
+  color: var(--color-text-dark); /* Тёмный текст */
 }
 
 .trust-section {
@@ -834,10 +769,11 @@ nav a:hover {
   margin: 2rem 0;
 }
 
+/* Заголовок "Почему клиенты выбирают меня" */
 .trust-section h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--color-text);
+  color: var(--color-heading);
 }
 
 .trust-badges {
@@ -850,7 +786,7 @@ nav a:hover {
 .badge {
   text-align: center;
   padding: 1.5rem;
-  background: var(--color-background-light);
+  background: var(--color-surface); /* ✅ Единообразие */
   border-radius: 12px;
   min-width: 200px;
 }
@@ -900,10 +836,11 @@ nav a:hover {
   color: white;
 }
 
+/* Текст в подвале */
 .thank-you-footer {
   text-align: center;
   padding: 2rem 0;
-  color: var(--color-text-light);
+  color: var(--color-text-light); /* Серый текст */
   border-top: 1px solid var(--color-border);
 }
 
@@ -936,26 +873,19 @@ nav a:hover {
   }
 }
 
-@keyframes slideInLeft {
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideInRight {
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 /* ===== МЕДИА-ЗАПРОСЫ ===== */
 
-/* Боковые панели только на широких экранах */
+/* Для экранов, где шапка становится высокой (пол-экрана) */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .hero-visual {
+    top: -100px;
+  }
+}
+
+/* Для широких экранов */
 @media (min-width: 1200px) {
-  .side-panel {
-    display: flex;
+  .hero-visual {
+    top: -50px; /* Меньше сдвиг, так как шапка ниже */
   }
 }
 
@@ -1121,7 +1051,26 @@ nav a:hover {
   }
 }
 
-/* Скрываем элементы с классом .hidden */
-.hidden {
-  display: none;
+/* Адаптив кнопки квиза для мобильных */
+@media (max-width: 768px) {
+  .hero-cta-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    width: 100%;              /* На мобильных на всю ширину */
+    max-width: 300px;         /* Но не слишком широкая */
+  }
+}
+
+/* Адаптив УТП для мобильных */
+@media (max-width: 768px) {
+  .hero-usp-list li {
+    padding-left: 32px;
+    font-size: 1rem;
+  }
+  
+  .hero-usp-list li::before {
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+  }
 }
