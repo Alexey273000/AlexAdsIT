@@ -16,6 +16,17 @@
   --color-border: #ddd;              /* Цвет границ и разделителей */
   --color-success: #4CAF50;          /* Зелёный для успешных операций */
   
+  /* 🆕 Цвета для кнопки мессенджера */
+  --color-messenger-start: #8B7355;  /* Светло-коричневый */
+  --color-messenger-end: #5D4A36;    /* Тёмно-коричневый */
+  
+  /* 🆕 Цвета иконок мессенджеров */
+  --color-telegram: #0088cc;         /* Синий Telegram */
+  --color-whatsapp: #25D366;         /* Зелёный WhatsApp */
+  --color-viber: #7360F2;            /* Фиолетовый Viber */
+  --color-other: #FF6B6B;            /* Красный для "другого" */
+  --color-hover: rgba(0, 0, 0, 0.05); /* Цвет наведения */
+  
   /* Тени - УНИФИЦИРОВАННЫЕ */
   --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -57,8 +68,8 @@ body {
 
 /* Стили для страницы благодарности */
 body.thank-you-page {
-  background-color: var(--color-surface); /* Светлый фон */
-  color: var(--color-text-dark);          /* Тёмный текст по умолчанию */
+  background-color: var(--color-surface);
+  color: var(--color-text-dark);
 }
 
 /* ===== ЛЕЙАУТ (КОНТЕЙНЕРЫ И СЕКЦИИ) ===== */
@@ -66,7 +77,7 @@ body.thank-you-page {
 /* Шапка сайта */
 header {
   background-color: var(--color-background);
-  backdrop-filter: blur(5px); /* Лёгкое размытие фона под шапкой для "стеклянного" эффекта */
+  backdrop-filter: blur(5px);
   box-shadow: var(--shadow-light);
   padding: 6px 20px;
   display: flex;
@@ -96,30 +107,26 @@ header {
 
 /* Стили для заголовка в секции Hero */
 .hero h1 {
-  font-size: 2.8rem; 
+  font-size: 2.8rem;
   margin-bottom: 0.5em;
-  line-height: 1.2; /* Для лучшей читаемости крупного текста */
-  color: #ffffff; /* Белый цвет, чтобы он не менялся от других настроек */
+  line-height: 1.2;
+  color: #ffffff;
 }
 
 /* Контейнер для фонового изображения */
 .hero-visual {
-  /* Абсолютное позиционирование для растягивания на всю ширину родителя */
   position: absolute;
-  top: 0; /* Базовое значение */
+  top: 0;
   left: 0;
   width: 100%;
-  /* Фиксированная размер изображения */
   height: 130vh;
-  /* Настройки фонового изображения */
-  background-image: url('img/Background.png'); /* Путь к файлу */
-  background-repeat: no-repeat; /* Чтобы изображение не повторялось */
-  background-position: center center; /* Центрируем изображение */
-  background-size: cover; /* Масштабируем, чтобы оно заполнило блок */
+  background-image: url('img/Background.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   z-index: -1;
-  /* Полупрозрачный тёмный оверлей для лучшей читаемости текста */
-  background-color: rgba(0, 0, 0, 0.4); /* Лёгкое затемнение фона */
-  background-blend-mode: overlay; /* Смешиваем цвет с изображением */
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: overlay;
 }
 
 /* Экранные секции */
@@ -203,14 +210,13 @@ nav a:hover {
 .main-menu a {
   display: inline-block;
   padding: 6px 10px;
-  margin: 0 0px;
   background-color: var(--color-primary);
   color: #fff;
   border-radius: var(--border-radius-small);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .main-menu a:hover {
@@ -229,7 +235,7 @@ nav a:hover {
 }
 
 .hamburger-btn {
-  display: none; /* Полностью скрываем кнопку */
+  display: none;
 }
 
 /* 4. КНОПКИ */
@@ -292,8 +298,8 @@ nav a:hover {
   font-size: 16px;
   border: none;
   border-radius: 12px;
-  background-color: var(--color-primary);  /* Единый синий цвет кнопок */
-  color: var(--color-text); /* Белый текст */
+  background-color: var(--color-primary);
+  color: var(--color-text);
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: var(--shadow-button);
@@ -309,33 +315,33 @@ nav a:hover {
   display: block;
   font-size: 18px;
   margin-bottom: 5px;
-  color: var(--color-text); /* Белый цвет для жирного текста */
+  color: var(--color-text);
 }
 
 .choice-btn small {
-  color: rgba(255, 255, 255, 0.9);  /* Почти белый, чуть прозрачный */
+  color: rgba(255, 255, 255, 0.9);
   font-size: 0.9rem;
 }
 
 /* Выбранная кнопка во втором шаге */
 .choice-btn.selected {
-  background-color: var(--color-primary-dark); /* Тёмно-синий */
+  background-color: var(--color-primary-dark);
   transform: scale(1.02);
 }
 
 .choice-btn.selected strong,
 .choice-btn.selected small {
-  color: var(--color-text); /* Белый текст на синем фоне */
+  color: var(--color-text);
 }
 
 /* Кнопка квиза на главном экране */
 .hero-cta-button {
   display: inline-block;
-  padding: 14px 32px;          /* Чуть крупнее обычных кнопок */
+  padding: 14px 32px;
   background-color: var(--color-primary);
   color: white;
-  border-radius: 40px;         /* Сильно скругленные края */
-  font-size: 1.1rem;           /* Немного крупнее */
+  border-radius: 40px;         /* Единственная кнопка с сильным скруглением */
+  font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
   text-align: center;
@@ -343,39 +349,39 @@ nav a:hover {
   border: none;
   cursor: pointer;
   box-shadow: var(--shadow-light);
-  margin: 20px 0;             /* Отступы сверху и снизу */
+  margin: 20px 0;
 }
 
 .hero-cta-button:hover {
   background-color: var(--color-primary-dark);
-  transform: translateY(-2px);  /* Эффект подъёма */
+  transform: translateY(-2px);
   box-shadow: var(--shadow-medium);
 }
 
 /* Список УТП */
 .hero-usp-list {
-  list-style: none;        /* Убираем стандартные маркеры */
+  list-style: none;
   padding: 0;
   margin: 30px 0 0 0;
 }
 
 .hero-usp-list li {
-  position: relative;      /* Для позиционирования псевдоэлемента */
-  padding-left: 36px;      /* Место для кружка с галочкой */
-  margin-bottom: 16px;     /* Отступ между пунктами */
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 16px;
   font-size: 1.1rem;
-  color: var(--color-text); /* Белый текст на фоне */
+  color: var(--color-text);
   line-height: 1.4;
-  min-height: 28px;       /* Чтобы текст не наезжал */
+  min-height: 28px;
 }
 
 /* Создаём кружок с галочкой */
 .hero-usp-list li::before {
-  content: "✓";           /* Символ галочки */
+  content: "✓";
   position: absolute;
   left: 0;
   top: 0;
-  width: 24px;           /* Размер кружка */
+  width: 24px;
   height: 24px;
   background-color: var(--color-usp-bg);
   color: var(--color-usp-check);
@@ -384,8 +390,8 @@ nav a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;    /* Делаем круг */
-  box-shadow: var(--shadow-button); /* Лёгкая тень */
+  border-radius: 50%;
+  box-shadow: var(--shadow-button);
 }
 
 /* 5. КВЕСТ (КОНСТРУКТОР ПРОЕКТА) */
@@ -411,7 +417,7 @@ nav a:hover {
 
 /* Заголовки шагов квиза */
 .builder .step h2 {
-  color: var(--color-text); /* Белый цвет */
+  color: var(--color-text);
   margin-bottom: 20px;
 }
 
@@ -441,12 +447,22 @@ nav a:hover {
 
 .builder form input {
   display: block;
-  margin: 10px auto;
-  padding: 10px;
-  width: 80%;
-  max-width: 300px;
+  margin: 15px auto;
+  padding: 16px 20px;
+  width: 100%;
+  max-width: 400px;
   border-radius: var(--border-radius-small);
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-text-dark);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.builder form input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-dark);
 }
 
 #project {
@@ -463,12 +479,12 @@ nav a:hover {
   min-height: 120px;
   border: 2px solid var(--color-primary);
   border-radius: 12px;
-  background: var(--color-surface); /* ✅ Единый цвет поверхности */
+  background: var(--color-surface);
   text-align: left;
   word-wrap: break-word;
   white-space: pre-wrap;
   font-size: 1.1rem;
-  color: var(--color-text-dark); /* ✅ Тёмный текст для читаемости */
+  color: var(--color-text-dark);
   line-height: 1.6;
   box-shadow: var(--shadow-medium);
   overflow-y: auto;
@@ -489,6 +505,196 @@ nav a:hover {
   content: "Информация о заказе появится здесь...";
   color: var(--color-text-muted);
   font-style: italic;
+}
+
+/* Кнопка выбора мессенджера - ширина как у полей ввода */
+.messenger-choice .messenger-toggle {
+    width: 100%;
+    max-width: 400px;  /* Такая же, как у input */
+    margin: 15px auto;
+    display: flex;
+    justify-content: center; /* Центрируем всю группу */
+    align-items: center;
+    gap: 15px;
+    
+    background: linear-gradient(
+        180deg,
+        var(--color-messenger-start),
+        var(--color-messenger-end)
+    );
+    
+    border: none;
+    border-radius: var(--border-radius-small); /* Как у полей */
+    padding: 12px 20px; /* Чуть меньше по высоте, чем поля ввода */
+    color: var(--color-text);
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-light); /* Более лёгкая тень */
+    transition: all 0.2s ease;
+}
+
+.messenger-choice .messenger-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+.messenger-choice .messenger-toggle,
+.messenger-choice .messenger-toggle:hover {
+  background: linear-gradient(
+    180deg,
+    var(--color-messenger-start),
+    var(--color-messenger-end)
+  );
+}
+
+.messenger-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  filter: brightness(1.1);
+}
+
+/* 🆕 Контейнер для иконок */
+.messenger-icons {
+  display: flex;
+  align-items: center;
+  margin-right: -10px; /* Дополнительный отступ справа */
+}
+
+/* 🆕 Каждая иконка-кружок */
+.messenger-icon {
+    width: 40px;  /* Фиксированный размер */
+    height: 40px; /* Фиксированный размер */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Убираем фон — он уже есть в SVG */
+    flex-shrink: 0; /* Запрещаем сжиматься */
+}
+
+/* Перекрытие иконок */
+.messenger-icon:not(:first-child) {
+    margin-left: -23px; /* Отрицательный левый отступ */
+}
+
+.messenger-icon img {
+    width: 32px;  /* Фиксированный размер */
+    height: 32px; /* Фиксированный размер */
+    display: block;
+}
+
+/* Текст на кнопке */
+.messenger-text {
+    font-weight: 500;
+    white-space: nowrap; /* Запрещаем перенос текста */
+}
+
+/* Выпадающее меню мессенджеров */
+.messenger-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 100%; /* Такая же ширина, как у кнопки */
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    padding: 8px 16px 8px 0px;
+    z-index: 2000; /* Выше, чем у кнопки Кворк */
+    margin-top: -180px; /* Прямо на кнопке */
+}
+
+.messenger-dropdown.show {
+    display: block;
+}
+
+/* Пункты меню */
+.messenger-option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--color-text-dark);
+    font-size: 1rem;
+    cursor: pointer;
+    gap: 12px;
+}
+
+.messenger-option:hover {
+    background: var(--color-hover); /* Более заметное выделение */
+}
+
+/* Иконки в меню */
+.option-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.option-icon img {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+/* Название мессенджера */
+.option-name {
+    font-weight: 500;
+}
+
+/* Родительский контейнер для позиционирования */
+.messenger-choice {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Красивое уведомление (toast) */
+.messenger-toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-surface);
+    color: var(--color-text-dark);
+    padding: 16px 24px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-medium);
+    font-size: 1rem;
+    font-weight: 500;
+    z-index: 10000;
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+    max-width: 90%;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@keyframes slideDown {
+    from {
+        top: -50px;
+        opacity: 0;
+    }
+    to {
+        top: 20px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
 }
 
 /* 6. ЧАТ-БОТ */
@@ -562,7 +768,7 @@ nav a:hover {
   flex-grow: 1;
   overflow-y: auto;
   padding: 10px;
-  background: var(--color-surface); /* ✅ Вместо #f0f2f5 */
+  background: var(--color-surface);
   border-radius: var(--border-radius);
   border: 1px solid var(--color-border);
   margin: 5px;
@@ -595,8 +801,8 @@ nav a:hover {
 .messages-container .bot-message {
   margin-right: auto;
   margin-left: 0;
-  background: var(--color-background); /* Белый полупрозрачный */
-  color: var(--color-text-dark); /* ✅ Тёмный текст, а не белый! */
+  background: var(--color-background);
+  color: var(--color-text-dark);
   border: 1px solid var(--color-border);
   border-radius: 12px 12px 12px 0;
   margin-bottom: 10px;
@@ -697,7 +903,6 @@ nav a:hover {
   animation: fadeInUp 0.8s ease;
 }
 
-/* Заголовок в карточке успеха */
 .success-card h1 {
   color: var(--color-heading);
   margin-bottom: 1rem;
@@ -720,15 +925,14 @@ nav a:hover {
 
 .thank-you-page h1,
 .thank-you-page h2 {
-  color: var(--color-heading); /* Все заголовки на странице благодарности тёмные */
+  color: var(--color-heading);
   margin-bottom: 1rem;
   font-size: 2.2rem;
 }
 
-/* Текст в карточке успеха */
 .success-message {
   font-size: 1.1rem;
-  color: var(--color-text-dark); /* Тёмный текст */
+  color: var(--color-text-dark);
   margin-bottom: 2rem;
   max-width: 600px;
   margin-left: auto;
@@ -743,7 +947,6 @@ nav a:hover {
   text-align: left;
 }
 
-/* Заголовок "Что будет дальше?" */
 .next-steps h2 {
   color: var(--color-heading);
   margin-bottom: 1rem;
@@ -755,10 +958,9 @@ nav a:hover {
   margin-bottom: 0;
 }
 
-/* Текст в списке "Что будет дальше?" */
 .next-steps li {
   margin-bottom: 0.8rem;
-  color: var(--color-text-dark); /* Тёмный текст */
+  color: var(--color-text-dark);
 }
 
 .trust-section {
@@ -769,7 +971,6 @@ nav a:hover {
   margin: 2rem 0;
 }
 
-/* Заголовок "Почему клиенты выбирают меня" */
 .trust-section h2 {
   text-align: center;
   margin-bottom: 2rem;
@@ -786,7 +987,7 @@ nav a:hover {
 .badge {
   text-align: center;
   padding: 1.5rem;
-  background: var(--color-surface); /* ✅ Единообразие */
+  background: var(--color-surface);
   border-radius: 12px;
   min-width: 200px;
 }
@@ -836,11 +1037,10 @@ nav a:hover {
   color: white;
 }
 
-/* Текст в подвале */
 .thank-you-footer {
   text-align: center;
   padding: 2rem 0;
-  color: var(--color-text-light); /* Серый текст */
+  color: var(--color-text-light);
   border-top: 1px solid var(--color-border);
 }
 
@@ -852,24 +1052,24 @@ nav a:hover {
 }
 
 @keyframes fadeIn {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(10px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes fadeInUp {
-  from { 
-    opacity: 0; 
-    transform: translateY(30px); 
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -885,13 +1085,13 @@ nav a:hover {
 /* Для широких экранов */
 @media (min-width: 1200px) {
   .hero-visual {
-    top: -50px; /* Меньше сдвиг, так как шапка ниже */
+    top: -50px;
   }
 }
 
 /* Мобильные устройства (ширина экрана меньше 768px) */
 @media (max-width: 768px) {
-  /* 1. ШАПКА */
+  /* ШАПКА */
   header {
     position: fixed;
     width: 100%;
@@ -909,7 +1109,7 @@ nav a:hover {
     text-align: left;
   }
   
-  /* 2. МЕНЮ НА МОБИЛЬНЫХ */
+  /* МЕНЮ НА МОБИЛЬНЫХ */
   .main-menu {
     display: none;
     flex-direction: column;
@@ -940,12 +1140,12 @@ nav a:hover {
     z-index: 1001;
   }
   
-  /* 3. СКРЫВАЕМ НАДПИСЬ "Онлайн..." */
+  /* СКРЫВАЕМ НАДПИСЬ "Онлайн..." */
   .sub-info {
     display: none;
   }
   
-  /* 4. ЧАТ-БОТ - ЦЕНТРИРОВАНИЕ */
+  /* ЧАТ-БОТ - ЦЕНТРИРОВАНИЕ */
   .chatbox {
     position: fixed;
     top: 50% !important;
@@ -958,25 +1158,25 @@ nav a:hover {
     border-radius: 12px;
   }
   
-  /* 5. НАСТРАИВАЕМ ПРОКРУТКУ К КВЕСТУ */
+  /* НАСТРАИВАЕМ ПРОКРУТКУ К КВЕСТУ */
   #project {
     scroll-margin-top: 80px;
   }
   
-  /* 6. КНОПКА ЗВОНКА */
+  /* КНОПКА ЗВОНКА */
   .cta-button {
     right: 20px;
     bottom: 20px;
   }
   
-  /* 7. КНОПКА KWORK */
+  /* КНОПКА KWORK */
   .kwork-button {
     padding: 8px 16px;
     font-size: 0.8rem;
     margin: 15px auto;
   }
   
-  /* 8. КВЕСТ НА МОБИЛЬНЫХ */
+  /* КВЕСТ НА МОБИЛЬНЫХ */
   .builder {
     padding: 20px 10px;
     width: 100%;
@@ -1011,7 +1211,7 @@ nav a:hover {
   .step[data-step="1"] .next-btn {
     width: 200px;
     max-width: 75%;
-    margin: 0;
+    margin: 8px 0;          /* ← Добавляем отступы сверху и снизу */
     padding: 14px 8px;
     font-size: 15px;
     text-align: center;
@@ -1024,13 +1224,34 @@ nav a:hover {
     word-wrap: break-word;
   }
   
+  /* Специально для длинного текста */
   .step[data-step="1"] .next-btn[data-category="image"] {
     width: 200px;
     font-size: 14px;
     padding: 12px 6px;
   }
   
-  /* 9. СТРАНИЦА БЛАГОДАРНОСТИ НА МОБИЛЬНЫХ */
+  /* Кнопка мессенджера на мобильных */
+  .messenger-choice .messenger-toggle {
+    max-width: 350px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    gap: 12px;
+  }
+  
+  .messenger-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+  
+  /* Поля ввода на мобильных */
+  .builder form input {
+    max-width: 350px;
+    padding: 14px 18px;
+  }
+  
+  /* СТРАНИЦА БЛАГОДАРНОСТИ НА МОБИЛЬНЫХ */
   .success-card {
     padding: 2rem;
   }
@@ -1049,20 +1270,16 @@ nav a:hover {
     width: 100%;
     text-align: center;
   }
-}
-
-/* Адаптив кнопки квиза для мобильных */
-@media (max-width: 768px) {
+  
+  /* Кнопка квиза на мобильных */
   .hero-cta-button {
     padding: 12px 24px;
     font-size: 1rem;
-    width: 100%;              /* На мобильных на всю ширину */
-    max-width: 300px;         /* Но не слишком широкая */
+    width: 100%;
+    max-width: 300px;
   }
-}
-
-/* Адаптив УТП для мобильных */
-@media (max-width: 768px) {
+  
+  /* УТП на мобильных */
   .hero-usp-list li {
     padding-left: 32px;
     font-size: 1rem;
