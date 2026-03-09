@@ -89,32 +89,160 @@ if (stepPrevBtn) {
     });
 }
 
-// 3. Обработка третьего шага (отправка формы)
+// ===== ФУНКЦИОНАЛ КНОПКИ МЕССЕНДЖЕРА (ВЫПАДАЮЩЕЕ МЕНЮ) =====
+document.addEventListener('DOMContentLoaded', function() {
+    const messengerToggle = document.getElementById('messenger-toggle');
+    const selectedMessengerInput = document.getElementById('selected-messenger');
+    
+    // Проверяем, есть ли уже меню
+    if (!document.getElementById('messenger-dropdown') && messengerToggle) {
+        const dropdown = document.createElement('div');
+        dropdown.id = 'messenger-dropdown';
+        dropdown.className = 'messenger-dropdown';
+        dropdown.innerHTML = `
+            <button type="button" class="messenger-option" data-messenger="whatsapp">
+                <span class="option-icon whatsapp">
+                    <img src="img/icons/whatsapp.svg" alt="WhatsApp" width="24" height="24">
+                </span>
+                <span class="option-name">WhatsApp</span>
+            </button>
+            <button type="button" class="messenger-option" data-messenger="telegram">
+                <span class="option-icon telegram">
+                    <img src="img/icons/telegram.svg" alt="Telegram" width="24" height="24">
+                </span>
+                <span class="option-name">Telegram</span>
+            </button>
+            <button type="button" class="messenger-option" data-messenger="viber">
+                <span class="option-icon viber">
+                    <img src="img/icons/viber.svg" alt="Viber" width="24" height="24">
+                </span>
+                <span class="option-name">Viber</span>
+            </button>
+            <button type="button" class="messenger-option" data-messenger="facebook">
+                <span class="option-icon facebook">
+                    <img src="img/icons/facebook.svg" alt="Facebook" width="24" height="24">
+                </span>
+                <span class="option-name">Facebook Messenger</span>
+            </button>
+        `;
+        
+        messengerToggle.parentNode.insertBefore(dropdown, messengerToggle.nextSibling);
+    }
+
+    const dropdown = document.getElementById('messenger-dropdown');
+    const options = document.querySelectorAll('.messenger-option');
+
+    if (!messengerToggle || !dropdown) return;
+
+    // Открытие/закрытие меню
+    messengerToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        dropdown.classList.toggle('show');
+    });
+
+    // Выбор мессенджера
+    options.forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+            
+            const messenger = this.dataset.messenger;
+            const messengerName = this.querySelector('.option-name').textContent;
+            
+            // ✅ КЛЮЧЕВОЙ МОМЕНТ: сохраняем в скрытое поле
+            if (selectedMessengerInput) {
+                selectedMessengerInput.value = messenger;
+                console.log('✅ Выбран мессенджер:', messenger, 'значение сохранено в hidden поле');
+            } else {
+                console.error('❌ Поле selected-messenger не найдено!');
+            }
+            
+            // Показываем уведомление
+            showNotification('Мы бесплатно отправим расчёт на ' + messengerName + ', звонить не будем!');
+            
+            // Закрываем меню
+            dropdown.classList.remove('show');
+        });
+    });
+
+    // Закрытие при клике вне меню
+    document.addEventListener('click', function(e) {
+        if (dropdown && !messengerToggle.contains(e.target) && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+});
+
+// Функция для красивого уведомления
+function showNotification(message) {
+    // Удаляем предыдущее уведомление, если есть
+    const oldToast = document.querySelector('.messenger-toast');
+    if (oldToast) oldToast.remove();
+    
+    // Создаём новое
+    const toast = document.createElement('div');
+    toast.className = 'messenger-toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    // Автоматически удаляем через 3 секунды
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+// ===== ОБРАБОТКА ТРЕТЬЕГО ШАГА (ОТПРАВКА ФОРМЫ) =====
 document.getElementById('order-form').addEventListener('submit', function (e) {
     e.preventDefault(); // Отменяем стандартную отправку формы
 
-    // Получаем данные из формы
-    const userName = document.getElementById('user-name').value.trim();
+    // Получаем данные из формы с проверкой на null
+    const userNameInput = document.getElementById('user-name');
     const phoneInput = document.getElementById('phone');
-    const phoneValue = phoneInput.value.trim();
-    const selectedMessenger = document.getElementById('selected-messenger').value;
+    const messengerInput = document.getElementById('selected-messenger');
+    const summaryInput = document.getElementById('project-summary-hidden');
 
-    // Простая валидация
+    // Проверяем все обязательные поля
+    if (!userNameInput) {
+        alert('Ошибка: поле имени не найдено. Обновите страницу.');
+        return;
+    }
+    
+    if (!phoneInput) {
+        alert('Ошибка: поле телефона не найдено. Обновите страницу.');
+        return;
+    }
+    
+    if (!summaryInput) {
+        alert('Ошибка: данные заказа не найдены. Пройдите квиз заново.');
+        return;
+    }
+
+    // Получаем значения
+    const userName = userNameInput.value.trim();
+    const phoneValue = phoneInput.value.trim();
+    
+    // Получаем выбранный мессенджер (если поля нет, используем WhatsApp)
+    let selectedMessenger = 'whatsapp';
+    if (messengerInput) {
+        selectedMessenger = messengerInput.value;
+    }
+    
+    const orderSummary = summaryInput.value;
+
+    // Валидация
     if (!userName) {
         alert('Пожалуйста, введите ваше имя.');
-        document.getElementById('user-name').focus();
+        userNameInput.focus();
         return;
     }
 
     const phoneDigits = phoneValue.replace(/\D/g, '');
-    if (phoneDigits.length < 10) { // Минимум 10 цифр для российского номера
+    if (phoneDigits.length < 10) {
         alert('Пожалуйста, введите корректный номер телефона (минимум 10 цифр).');
         phoneInput.focus();
         return;
     }
-
-    // Формируем сводку заказа (из шагов 1 и 2)
-    const orderSummary = document.getElementById('project-summary-hidden').value;
 
     // Формируем сообщение для Telegram
     const message = `📋 Новая заявка с лендинга!\n\n` +
