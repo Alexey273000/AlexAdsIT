@@ -106,7 +106,7 @@
 <div class="step" data-step="3">
     <h2>Спасибо! Мы подготовили варианты.</h2>
     <!-- НАЧАЛО: Подзаголовок -->
-    <p class="quiz-step-subtitle">Оставьте телефон для бесплатного расчёта в WhatsApp. Отправим смету и ответим на вопросы текстом. Звонить не будем.</p>
+    <p class="quiz-step-subtitle">Оставьте номер телефона и мы бесплатно отправим расчёт на WhatsApp, звонить не будем!</p>
     <!-- КОНЕЦ: Подзаголовок -->
 
     <form id="order-form">
@@ -119,33 +119,38 @@
         </div>
 
         <!-- ПОЛЕ ВВОДА "Номер телефона" (улучшено) -->
-        <div class="input-field">
-            <input type="tel" name="phone" id="phone" placeholder="Номер телефона" required />
-        </div>
-
-        <!-- ВЫБОР МЕССЕНДЖЕРА (пока заглушка) -->
-        <div class="messenger-choice">
-            <!-- Это будет длинная кнопка. JS добавим позже. -->
-            <button type="button" class="messenger-toggle" id="messenger-toggle">
-                <!-- Здесь позже вставим иконки -->
-                <span>Использовать мессенджер</span>
-                <span>▼</span> <!-- Стрелочка вниз -->
-            </button>
-            <!-- Скрытый выпадающий список -->
-            <div class="messenger-dropdown" id="messenger-dropdown" style="display: none;">
-                <button type="button" data-messenger="whatsapp">WhatsApp</button>
-                <button type="button" data-messenger="telegram">Telegram</button>
-                <button type="button" data-messenger="viber">Viber</button>
-                <button type="button" data-messenger="other">Предложить другой способ</button>
-            </div>
-            <!-- Скрытое поле для передачи выбора в форму -->
-            <input type="hidden" id="selected-messenger" name="selected-messenger" value="whatsapp" />
-        </div>
-
-        <!-- ИТОГОВАЯ КНОПКА -->
-        <button type="submit" class="submit-btn">Получить расчёт</button>
-    </form>
+<div class="input-field">
+    <input type="tel" name="phone" id="phone" placeholder="Номер телефона" required />
 </div>
+
+<!-- 🆕 СКРЫТОЕ ПОЛЕ ДЛЯ МЕССЕНДЖЕРА -->
+    <input type="hidden" id="selected-messenger" name="selected-messenger" value="whatsapp" />
+
+<!-- ВЫБОР МЕССЕНДЖЕРА -->
+<div class="messenger-choice">
+    <button type="button" class="messenger-toggle" id="messenger-toggle">
+        <div class="messenger-icons">
+            <span class="messenger-icon telegram">
+                <img src="img/icons/telegram.svg" alt="Telegram">
+            </span>
+            <span class="messenger-icon whatsapp">
+                <img src="img/icons/whatsapp.svg" alt="WhatsApp">
+            </span>
+            <span class="messenger-icon viber">
+                <img src="img/icons/viber.svg" alt="Viber">
+            </span>
+            <span class="messenger-icon facebook">
+                <img src="img/icons/facebook.svg" alt="Facebook">
+            </span>
+        </div>
+        <span class="messenger-text">Использовать мессенджер</span>
+    </button>
+</div>
+
+<!-- ИТОГОВАЯ КНОПКА -->
+<button type="submit" class="submit-btn">Получить расчёт</button>
+    </form><!-- Закрытие id="order-form" -->
+</div><!-- Закрытие class="step" data-step="3" -->
 
     </div> <!-- Закрытие .step-wrapper -->
   </div> <!-- Закрытие .step-card -->
@@ -184,6 +189,6 @@
 <!-- Кнопка на Кворк -->
 <a href="https://kwork.ru/user/alexadsit" class="kwork-button" target="_blank">Мой Кворк</a><!--Ссылка с открытием в новой вкладке(исправлено 22.06.2025)-->
 
-<script src="script.js" defer></script>
+<script src="script.js"></script>
 </body>
 </html>
